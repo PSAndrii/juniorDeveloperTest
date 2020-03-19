@@ -52,14 +52,12 @@
     <hr />
     <section>
 <?php
-    global $db;
-    $res = mysqli_query($db, "SELECT name, id, SKU, price, size, HxWxL, weight, show_prod FROM product");
+    $res = mysqli_query($db, "SELECT name, id, SKU, price, size, HxWxL, weight FROM $MyTable");
     $data_product = mysqli_fetch_all($res, MYSQLI_ASSOC);
     //function output from database to page
     function view_product($data_product){
         foreach($data_product as $item){
-            // check whether it is possible to display. let's say the value of 'show_prod' is responsible for this
-            if($item['show_prod']){ 
+            // check whether it is possible to display. let's say the value of 'show_prod' is responsible for this 
                 echo "<a class='product-card'>";
                 echo"<input class='checks' id='".$item['id']."' type='checkbox'>";
                     echo "<div class='scale'>";
@@ -75,9 +73,7 @@
                         echo "</span>"; 
                     echo "</div>"; 
                 echo "</a>";
-            }else{
-                echo '';
-            } 
+            
         }
     } 
     // call the function output from database to page

@@ -39,11 +39,11 @@
     </form>
 </body>
 </html>
-<?php
-global $db; 
-Add_product($db);
+<?php 
+
+Add_product($db, $MyTable);
 // function for writing to the database of values ​​received from form
-function Add_product($e){
+function Add_product($e, $MyTable){
     //write received data to variables
     $form_data_sku = isset($_POST['sku'])?$_POST['sku']:'';
     $form_data_name = isset($_POST['name'])?$_POST['name']:'';
@@ -61,12 +61,12 @@ function Add_product($e){
             $addName='weight'; $addValue=$_POST['weight'];
         }
     //create a query in the database using our variables as values
-    $insert ="INSERT INTO `product`(SKU, name, price, $addName) 
+    $insert ="INSERT INTO $MyTable(SKU, name, price, $addName) 
         VALUES ('$form_data_sku', '$form_data_name', '$form_data_price', '$addValue')"; 
     //send request to database
     $res_insert = mysqli_query($e, $insert);
     if($res_insert){
-        header("location: admin_product_add.php");
+        header("location: product_add_page.php");
         die;
     }   
 };
