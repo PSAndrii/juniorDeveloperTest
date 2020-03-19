@@ -1,0 +1,18 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.swich_item{
+    width: 300px;
+    border: 1px solid;
+    padding: 10px;
+}
+
+label{
+    display: inline-block;
+    width: 70px;
+  }
+.btn_save_padding{
+    padding: 0 40px;
+}
