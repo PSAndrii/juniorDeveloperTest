@@ -1,4 +1,4 @@
-<?php require 'connect_db.php' /* connected to database*/?>
+<?php require_once 'connect_db.php' /* connected to database*/?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,8 +48,19 @@
 ?>
             <!--<input tupe='text' name='del' value=''>-->
         </form>
+      
     </header>
     <hr />
+    <?php require_once 'addProductForTest.php'?>
+    <?php 
+	if (isset($_POST['add_prods'])) {
+		Add_Prods();
+		unset($_POST['add_prods']); 
+		};
+		?>
+      <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+            <label>for add some prods press =></label><button name="add_prods">Add prods</button>
+        </form>
     <section>
 <?php
     $res = mysqli_query($db, "SELECT name, id, SKU, price, size, HxWxL, weight FROM $MyTable");
