@@ -7,7 +7,7 @@ $optionValue = array(array('700mb','700mb','4gb','8gb'), array('25x45x20','40x70
 
 $optionNames = array('size','HxWxL','weight');
 
-function Add_Prods() {
+function Add_Items() {
 global $MyTable, $skus, $names, $price, $optionValue, $optionNames; 
 for($y=0;$y<3;$y++){
        for($i=0;$i<4;$i++){
@@ -18,6 +18,6 @@ for($y=0;$y<3;$y++){
     }
 }
 header("location: product_list_page.php");
-        die;
+die;
 }; 
 ?>

@@ -1,4 +1,4 @@
-<?php require 'connect_db.php' /* connected to database*/?> 
+<?php require 'php/connect_db.php' /* connected to database*/?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +40,6 @@
 </body>
 </html>
 <?php 
-
 Add_product($db, $MyTable);
 // function for writing to the database of values ​​received from form
 function Add_product($e, $MyTable){

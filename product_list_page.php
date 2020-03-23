@@ -1,4 +1,4 @@
-<?php require_once 'connect_db.php' /* connected to database*/?>
+<?php require_once 'php/connect_db.php' /* connected to database*/?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,55 +12,37 @@
     <title>Product_list</title>
 </head>
 <body>
-    <header>
-        <span class="size_header_text">Product_list</span>
-        <form method="post" action="" >
-            <label>Mass Delete Action<input id="allcheck" type="checkbox"></label>
-            <button id="apply" class="btn btn_apply_pdding" type="submit">Apply</button>
-<?php
-    echo '<script>
-// mark all check points
-    $("#allcheck").click(function(e) {
-        var check = $(".checks");
-        var changeCheck = $("#allcheck");
-            for(var i=0; i<check.length; i++){
-//assign the property “checked”  to the check that we have for mass validation
-                check[i].checked = changeCheck[0].checked;
-            }
-    });
-// create a query to the database to hide / delete specific products
-    $("#apply").click(function(e) {
-        var check = $(".checks"); //an object containing all elements with a class .checks
-        var stringRequest =""; // the line contains information about the marked check items (WHERE `product`.`id`=elementId;)
-        var update = "UPDATE `product` SET `show_prod`=0 WHERE ";
-            for(var i=0; i<check.length; i++){
-                if(check[i].checked){
-                    stringRequest=("`product`.`id`="+check[i].id+" OR ");
-                    update += stringRequest;
-                }
-            }
-            if(stringRequest != ""){
-                // after a set of elements of the last row ";"
-                update = update.substr(0, update.length - 4)+";";
-                alert(update);
-            }   
-    });</script>';
-?>
-            <!--<input tupe='text' name='del' value=''>-->
-        </form>
-      
-    </header>
-    <hr />
-    <?php require_once 'addProductForTest.php'?>
+<?php require_once 'php/addProductForTest.php' /* connected to file add some items for test*/?> 
     <?php 
-	if (isset($_POST['add_prods'])) {
-		Add_Prods();
-		unset($_POST['add_prods']); 
+	if (isset($_POST['add_items'])) {
+		Add_Items();
+		unset($_POST['add_items']); 
 		};
 		?>
       <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-            <label>for add some prods press =></label><button name="add_prods">Add prods</button>
+            <label>for add some prods press =></label><button name="add_items">Add items</button>
         </form>
+        <hr />
+    <?php require_once 'php/delete_items.php' /* connected to file for delete items*/?>
+    <?php 
+	if (isset($_POST['checkbox'])) {
+		dell();
+		unset($_POST['checkbox']); 
+		};
+		?>
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" >
+    <div class="headerInForm">
+        <span class="size_header_text">Product_list</span>
+        <div>
+            <select name="option" id="">
+                    <option value="">Mass Delete Action</option>
+                    <option value="">--</option>
+                    <option value="">--</option>
+            </select>
+            <button id="apply" class="btn btn_apply_pdding"  type="submit">Apply</button>  
+        </div>
+    </div>
+    <hr />
     <section>
 <?php
     $res = mysqli_query($db, "SELECT name, id, SKU, price, size, HxWxL, weight FROM $MyTable");
@@ -70,7 +52,7 @@
         foreach($data_product as $item){
             // check whether it is possible to display. let's say the value of 'show_prod' is responsible for this 
                 echo "<a class='product-card'>";
-                echo"<input class='checks' id='".$item['id']."' type='checkbox'>";
+                echo"<input class='checks' name='checkbox[]' id='".$item['id']."' value='".$item['id']."' type='checkbox'>";
                     echo "<div class='scale'>";
                     // print all the fields we need
                         echo "<span>{$item['SKU']}</span>";
@@ -84,13 +66,13 @@
                         echo "</span>"; 
                     echo "</div>"; 
                 echo "</a>";
-            
         }
     } 
     // call the function output from database to page
     view_product($data_product);?>
 
     </section>
+    </form>
     <footer>
         <span>&copyProduct_list</span>
     </footer>

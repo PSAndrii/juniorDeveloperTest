@@ -18,6 +18,6 @@ function OurGetXMLHttp() {
                 with (document.getElementById(ElementId))
                     innerHTML=MyXMLFile.responseText
         };
-        MyXMLFile.open("GET", "swich.php?q="+value, true);
+        MyXMLFile.open("GET", "php/swich.php?q="+value, true);
         MyXMLFile.send()
     }
