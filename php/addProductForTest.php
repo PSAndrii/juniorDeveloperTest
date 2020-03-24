@@ -1,4 +1,4 @@
-<?php require_once "connect_db.php";
+<?php require_once "db.php";
 
 $skus = array(array('QQ555WW','QQ556WW','QQ557WW','QQ559WW'), array('AA560SS','AA561SS','AA562SS','AA563SS'), array('ZZ564XX','ZZ565XX','ZZ566XX','ZZ567XX'));
 $names = array(array('SD','SDr','DVD','DVD+'), array('Chair','Chair','Table','shelf'), array('War and Peace','treasure Island','Harry Potter','Red and Black'));

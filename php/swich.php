@@ -10,10 +10,11 @@ $arrayHint=array(
     array('', '', 'HxWxL - Lorem ipsum dolor, sit amet consectetur adipisicing elit.'),
     array('WEIGHT - Lorem ipsum dolor, sit amet consectetur adipisicing elit.'));
 
-$o=$_GET['q'];
+$swich=$_GET['swich'];
+//print_r($swich);
 for($i=0; $i<count($swichs);$i++){
     //Check what was selected. verification exclude option with 'non_swiched'
-    if($o!=$swichs[0]&&$swichs[$i] == $o){
+    if($swich!=$swichs[0]&&$swichs[$i] == $swich){
         echo "<div class='swich_item'>";
         // output setting according to selection
             for($y=0;$y<count($arrayName[$i]);$y++){

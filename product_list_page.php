@@ -1,4 +1,4 @@
-<?php require_once 'php/connect_db.php' /* connected to database*/?>
+<?php require_once 'php/db.php' /* connected to database*/?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,52 +24,60 @@
         </form>
         <hr />
     <?php require_once 'php/delete_items.php' /* connected to file for delete items*/?>
+    <?php //require_once 'php/dont_show.php' /* connected to file for delete items*/?>
     <?php 
-	if (isset($_POST['checkbox'])) {
-		dell();
-		unset($_POST['checkbox']); 
-		};
-		?>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" >
-    <div class="headerInForm">
-        <span class="size_header_text">Product_list</span>
-        <div>
-            <select name="option" id="">
-                    <option value="">Mass Delete Action</option>
-                    <option value="">--</option>
-                    <option value="">--</option>
-            </select>
-            <button id="apply" class="btn btn_apply_pdding"  type="submit">Apply</button>  
+        if (isset($_POST['checkbox'])) {
+            dell();
+            unset($_POST['checkbox']); 
+        };
+    ?>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" >
+            <div class="headerInForm">
+                <span class="size_header_text">Product_list</span>
+                <div class="headerInForm">
+    <?php
+// creates a popup menu
+// an array of names for the popup menu items
+    $options=array('defoult','Mass_Delete_Action'); 
+    $optionsName=array('defoult','Mass Delete Action'); 
+    echo "<select name='select' onchange='select_selected()'>";
+        for($i=0;$i<count($options);$i++){
+            echo "<option value='".$options[$i]."'>".$optionsName[$i]."</option>";
+        };
+    echo "</select>";
+    ?>
+        <button id="apply" class="btn btn_apply_pdding"  type="submit">Apply</button>  
         </div>
     </div>
     <hr />
     <section>
-<?php
-    $res = mysqli_query($db, "SELECT name, id, SKU, price, size, HxWxL, weight FROM $MyTable");
-    $data_product = mysqli_fetch_all($res, MYSQLI_ASSOC);
-    //function output from database to page
-    function view_product($data_product){
-        foreach($data_product as $item){
-            // check whether it is possible to display. let's say the value of 'show_prod' is responsible for this 
-                echo "<a class='product-card'>";
-                echo"<input class='checks' name='checkbox[]' id='".$item['id']."' value='".$item['id']."' type='checkbox'>";
-                    echo "<div class='scale'>";
-                    // print all the fields we need
-                        echo "<span>{$item['SKU']}</span>";
-                        echo "<span>{$item['name']}</span>";
-                        echo "<span>{$item['price']} $</span>";
-                        echo "<span>";
-                            if($item['size']) echo $item['size'];
-                            elseif($item['HxWxL']) echo $item['HxWxL'];
-                            elseif($item['weight']) echo $item['weight'];
-                            else echo 'not found';
-                        echo "</span>"; 
-                    echo "</div>"; 
-                echo "</a>";
-        }
-    } 
-    // call the function output from database to page
-    view_product($data_product);?>
+<?php require_once 'php/Add_items_to_product_list.php' ?>
+<?php view_product($data_product);// call the function output from database to page  ?>
+
+<script>
+    function select_selected(){
+                var selected = $('select[name="select"]').val();
+                $.ajax({
+                    type: "POST",
+                    url: "",
+                    data: {choosed: selected},
+                    success: function(data){
+                        if(selected == 'Mass_Delete_Action'){
+                            for(var i = 0; i<sel.length; i++){
+                                var input = document.createElement('input');
+                                input.setAttribute('class', 'checks');
+                                input.setAttribute('type', 'checkbox');
+                                input.setAttribute('name', 'checkbox[]');
+                                input.setAttribute('value', sel[i]);
+                                var items_in_product_list = $(".product-card");
+                                items_in_product_list[i].appendChild(input);
+                                console.log(items_in_product_list[i]);
+                            }
+                        }else{}
+                    }
+                });
+    };
+</script>
 
     </section>
     </form>

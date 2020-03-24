@@ -22,6 +22,8 @@ section {
     background-color: rgb(247, 241, 195);
     margin-bottom: 5px;
     font-size: 14px;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .scale{

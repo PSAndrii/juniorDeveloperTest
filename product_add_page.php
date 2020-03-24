@@ -1,4 +1,4 @@
-<?php require 'php/connect_db.php' /* connected to database*/?> 
+<?php require 'php/db.php' /* connected to database*/?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +11,6 @@
     <title>Product_add</title>
 </head>
 <body>
-
     <form method="post" action="">
         <div class="header">
             <span class="size_header_text">Product Add</span>
