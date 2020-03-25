@@ -3,8 +3,8 @@
 $Domain = "localhost";
 $User = "testBase";
 $Password = "AiYrbaUrdDme6V6l";
-$MyDataBase = "mybd";
-$MyTable = "product18";// table name
+$MyDataBase = "mybd"; 
+$MyTable = "product19";// table name
 // connected to database
 $db = mysqli_connect($Domain, $User, $Password, $MyDataBase) or die('Connection to DB failed');
 if(!$db) die(mysqli_connect_error());

@@ -24,10 +24,11 @@
         </form>
         <hr />
     <?php require_once 'php/delete_items.php' /* connected to file for delete items*/?>
-    <?php //require_once 'php/dont_show.php' /* connected to file for delete items*/?>
+    <?php require_once 'php/dont_show.php' /* connected to a file to change the status of items*/?>
     <?php 
-        if (isset($_POST['checkbox'])) {
-            dell();
+        if(isset($_POST['checkbox'])) {
+            dell(); // for delete
+            //dont_get_from_db();  //change marker to delete. the file php/Add_items_to_product_list.php has a filter on this marker for introduction.
             unset($_POST['checkbox']); 
         };
     ?>
@@ -36,12 +37,12 @@
                 <span class="size_header_text">Product_list</span>
                 <div class="headerInForm">
     <?php
-// creates a popup menu
-// an array of names for the popup menu items
-    $options=array('defoult','Mass_Delete_Action'); 
-    $optionsName=array('defoult','Mass Delete Action'); 
+// creates a drop down menu
+
+    $options=array('defoult','Mass_Delete_Action'); // value for drop down items
+    $optionsName=array('defoult','Mass Delete Action'); // an array of names for the drop down menu items
     echo "<select name='select' onchange='select_selected()'>";
-        for($i=0;$i<count($options);$i++){
+        for($i=0;$i<count($options);$i++){ 
             echo "<option value='".$options[$i]."'>".$optionsName[$i]."</option>";
         };
     echo "</select>";
@@ -62,23 +63,15 @@
                     url: "",
                     data: {choosed: selected},
                     success: function(data){
-                        if(selected == 'Mass_Delete_Action'){
-                            for(var i = 0; i<sel.length; i++){
-                                var input = document.createElement('input');
-                                input.setAttribute('class', 'checks');
-                                input.setAttribute('type', 'checkbox');
-                                input.setAttribute('name', 'checkbox[]');
-                                input.setAttribute('value', sel[i]);
-                                var items_in_product_list = $(".product-card");
-                                items_in_product_list[i].appendChild(input);
-                                console.log(items_in_product_list[i]);
-                            }
-                        }else{}
+                        if(selected=='Mass_Delete_Action'){
+                            $('.checks').show();
+                        }else {
+                            $('.checks').hide();
+                        }
                     }
                 });
-    };
+            };
 </script>
-
     </section>
     </form>
     <footer>

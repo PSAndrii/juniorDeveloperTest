@@ -1,6 +1,4 @@
 <?php require_once "db.php";
-
-
 function dell(){
     global $db, $MyTable;
     $checkbox = $_POST['checkbox'];
