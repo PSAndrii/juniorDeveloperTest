@@ -8,7 +8,7 @@
     <script src="js/myLibrary.js"></script>
     <link rel="stylesheet" href="styles/general_style.css">
     <link rel="stylesheet" href="styles/product_add_page.css">
-    <title>Product_add</title>
+    <title>Product add</title>
 </head>
 <body>
     <form method="post" action="">
@@ -22,8 +22,8 @@
         <p><label>Price:</label><input type="text" name="price"></p>
    
 <?php
-// creates a popup menu
-// an array of names for the popup menu items
+// creates a drop down menu
+// an array of names for the drop down menu items
     $swichs=array('non_swiched','switcher_size','switcher_hwl','switcher_weight'); 
     // added event onchange with ajax to dynamically change content
     echo "<p>Type Swicher: <select id='swich' onchange='AJAX_Swiched(".'"Swich_container"'.", this.value, true)'>";
