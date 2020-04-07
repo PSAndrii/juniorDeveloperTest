@@ -1,28 +1,42 @@
-<?php 
-// names array for options
-$swichs=array('non_swiched','switcher_size','switcher_hwl','switcher_weight');
-// names array for input names
-$arrayName=array(array(), array('size'), array('height','width','lendth'), array('weight'));
-// hints array for input field
-$arrayHint=array(
-    array(), 
-    array('SIZE - Lorem ipsum dolor, sit amet consectetur adipisicing elit.'),
-    array('', '', 'HxWxL - Lorem ipsum dolor, sit amet consectetur adipisicing elit.'),
-    array('WEIGHT - Lorem ipsum dolor, sit amet consectetur adipisicing elit.'));
-
-$swich=$_GET['swich'];
-//print_r($swich);
-for($i=0; $i<count($swichs);$i++){
-    //Check what was selected. verification exclude option with 'non_swiched'
-    if($swich!=$swichs[0]&&$swichs[$i] == $swich){
-        echo "<div class='swich_item'>";
-        // output setting according to selection
-            for($y=0;$y<count($arrayName[$i]);$y++){
-                echo "<label>".$arrayName[$i][$y].":</label><input type='text' name='".$arrayName[$i][$y]."'>";
-                echo "<p>".$arrayHint[$i][$y]."</p>";
-            } 
-        echo "</div>";  
-    }
+<?php
+abstract class BaseToSwich
+{
+    abstract function addSelect();
 }
 
+class SwichToDellete extends BaseToSwich
+{
+    private $nameOptions=array('defoult','Mass_Delete_Action'); // value for drop down items
+    private $nameOptionsInnerHTML=array('defoult','Mass Delete Action'); // an array of names for the drop down menu items
+ 
+    public function addSelect(){
+        $result='';
+        $result.= "<select name='select' onchange='select_selected()'>";
+            for($i=0;$i<count($this->nameOptions);$i++){ 
+                $result.= "<option value='{$this->nameOptions[$i]}'>{$this->nameOptionsInnerHTML[$i]}</option>";
+            };
+        $result.= "</select>";
+        return $result;
+    }
+}
+$swichToDell= new SwichToDellete;
+
+
+class SwichToAdd extends BaseToSwich
+{
+
+    private $swichs=array('non_swiched','switcher_size','switcher_hwl','switcher_weight'); 
+    
+    public function addSelect(){
+        $result='';
+        $result.= "<p>Type Swicher: <select id='swich' onchange='AJAX_Swiched(".'"Swich_container"'.", this.value, true)'>";
+            for($i=0;$i<count($this->swichs);$i++){ 
+                $result.= "<option id='{$this->swichs[$i]}'>{$this->swichs[$i]}</option>";
+            };
+        $result.= "</select></p>";
+        $result.= "<div id='Swich_container'></div>"; 
+        return $result;
+    }
+}
+$swichToAdd = new SwichToAdd;
 ?>

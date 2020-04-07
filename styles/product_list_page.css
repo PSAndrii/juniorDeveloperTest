@@ -24,17 +24,14 @@ section {
     font-size: 14px;
 }
 
-.scale{
-    padding: 7px;
-    text-align: center;
-}
-
 .scale:hover{
     transform: scale(1.1);
 }
 
-.scale span{
+.product-card span{
     display: block;
+    padding: 7px;
+    text-align: center;
 }
 
 footer{

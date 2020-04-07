@@ -1,6 +1,0 @@
-specify the following in the php/db.php file:
-$Domain = "____";
-$User = "____";
-$Password = "________";
-$MyDataBase = "_______"; 
-$MyTable = "______"; table name
