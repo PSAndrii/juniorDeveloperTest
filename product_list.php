@@ -28,8 +28,9 @@
         <hr />
         <section>
         <?php 
+        require_once 'php/getItemsDB.php';
         require_once 'php/ShowItems.php'; 
-        require_once 'php/showItemsDB.php';
+        
             
             echo $hwl->expandToSomeType($connectionToShow, $hwl, 'HxWxL');
             echo $size->expandToSomeType($connectionToShow, $size, 'size');
