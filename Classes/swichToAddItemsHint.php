@@ -1,8 +1,8 @@
 <?php 
 
-class SwichToAddPage
+class SwichToAddItemsHint
 {
-    private $swichs=array('non_swiched','switcher_size','switcher_hwl','switcher_weight');
+    private $swichs=array('non swiched','Switcher size','Switcher hwl','Switcher weight');
     private $arrayName=array(array(), array('size'), array('height','width','lendth'), array('weight'));
     private $arrayHint=array(
         array(), 
@@ -10,7 +10,7 @@ class SwichToAddPage
         array('', '', 'HxWxL - Lorem ipsum dolor, sit amet consectetur adipisicing elit.'),
         array('WEIGHT - Lorem ipsum dolor, sit amet consectetur adipisicing elit.'));
   
-    function addTypes($swich){
+    function addBlockWhithHint($swich){
         $result='';
         for($i=0; $i<count($this->swichs);$i++){
             //Check what was selected. verification exclude option with 'non_swiched'
@@ -27,6 +27,6 @@ class SwichToAddPage
     
     }
 }
-$swichToAddPage = new SwichToAddPage;
+$swichToAddItemsHint = new SwichToAddItemsHint();
 $swich=isset($_GET['swich'])?$_GET['swich']:'';
-echo $swichToAddPage->addTypes($swich);
+echo $swichToAddItemsHint->addBlockWhithHint($swich);

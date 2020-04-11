@@ -15,6 +15,11 @@ section {
     justify-content: space-between;
   }
   
+a{
+     text-decoration: none;
+     color: #000;
+}
+
 .product-card{
     width: calc(1/4*100% - (1 - 1/4)*30px);
     border: 1px solid;
@@ -22,6 +27,7 @@ section {
     background-color: rgb(247, 241, 195);
     margin-bottom: 5px;
     font-size: 14px;
+   
 }
 
 .scale:hover{

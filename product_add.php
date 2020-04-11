@@ -19,12 +19,10 @@
         <p><label>SKU:</label><input type="text" name="sku"></p>
         <p><label>Name:</label><input type="text" name="name"></p>
         <p><label>Price:</label><input type="text" name="price"></p>
-        <?php require_once 'php/Swich.php';
-            echo $swichToAdd->addSelect();
+        <?php require_once 'Classes/swichForAddTypesProduct.php';
+            echo $swichForAddTypesProduct->addSelect();
         ?>
-        <?php require_once 'php/swichToAddItems.php';
-           
-        ?>
+        <?php require_once 'Classes/swichToAddItemsHint.php';?>
     </form>
 </body>
 </html>

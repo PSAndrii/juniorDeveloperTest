@@ -3,7 +3,7 @@ require_once 'connectToDB.php';
 
 //-------------------------------------------------------
 // Show items on page 
-class ConnectionToShow extends Connection
+class GetItemsFromDB extends ConnectToDB
 {
     	
     //Делает запрос к базе (Makes a request to the database)
@@ -28,4 +28,4 @@ class ConnectionToShow extends Connection
 		return mysqli_fetch_all($result, MYSQLI_ASSOC);
 	}
 }
-$connectionToShow = new ConnectionToShow;
+$getItemsFromDB = new GetItemsFromDB();

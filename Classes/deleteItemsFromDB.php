@@ -4,7 +4,7 @@ require_once 'connectToDB.php';
 // ---------------------------------------------------------------
 // delete items 
 
-Class ConnectionToDelete extends Connection
+Class DeleteItemsFromDB extends ConnectToDB
 {
     // делаем запрос на удаление
     public function setToDelete($checkbox)
@@ -38,5 +38,5 @@ Class ConnectionToDelete extends Connection
 		}
     }
 }
-$connectionToDelete = new ConnectionToDelete;
+$deleteItemsFromDB = new DeleteItemsFromDB;
 ?>

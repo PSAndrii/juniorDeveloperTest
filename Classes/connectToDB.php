@@ -1,5 +1,5 @@
 <?php
-abstract class Connection
+abstract class ConnectToDB
 {
     public $link;
 	private $host = "localhost";
@@ -8,7 +8,7 @@ abstract class Connection
 	private $database = "mybd";
 	public $table = "product19";
 		
-	public function __construct()//Подключается к базе (Connects to the base)
+	public function __construct()// Connects to the base
 	{
 		$this->link = mysqli_connect($this->host, $this->user, $this->password, $this->database) or die('Connection to DB failed');
 	}
