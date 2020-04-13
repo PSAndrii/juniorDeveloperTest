@@ -1,22 +1,22 @@
 <?php
-require_once 'Classes/product.php';
+require_once 'product.php';
 
-class HWLProduct extends Product
+class WeightProduct extends Product
 {
-    private $hwl;
+    private $weight;
 
     public function __construct($db, $i){
         parent::__construct($db, $i);
-        $this->hwl=$db->get()[$i]['HxWxL'];
+        $this->weight=$db->get()[$i]['weight'];
     }
 
     public function getProduct()
     {   
         $result='';
-        if($this->hwl){
+        if($this->weight){
             $result.= parent::getProduct();
-            $result.= "<span>{$this->hwl}</span>";
-            $result.= "</a>"; 
+            $result.= "<span>{$this->weight}</span>";
+            $result.= "</div>"; 
         }
         return $result;
     }

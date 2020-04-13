@@ -10,19 +10,32 @@
     <title>Product add</title>
 </head>
 <body>
-    <form method="post" action="">
+    <form method="post" action="<?php 'insertItemToDB.php' ?>">
         <div class="header">
             <span class="size_header_text">Product_Add</span>
             <button type="submit" class="btn btn_save_padding" value="Save">Save</button> 
         </div>
-        <hr> 
-        <p><label>SKU:</label><input type="text" name="sku"></p>
-        <p><label>Name:</label><input type="text" name="name"></p>
-        <p><label>Price:</label><input type="text" name="price"></p>
-        <?php require_once 'Classes/swichForAddTypesProduct.php';
+        <hr>
+        <p><span class="error"> * - required field</span></p> 
+        <p><label>SKU:</label><input type="text" name="sku" required><span class="error"> *</span></p>
+        <p><label>Name:</label><input type="text" name="name" required><span class="error"> *</span></p>
+        <p><label>Price:</label><input type="text" name="price" pattern="[0-9\.]{0,}" required><span class="error"> *</span></p>
+        <?php require_once 'Classes/swich/swichForAddTypesProduct.php'; // to connect the necessary switch
+        //pass in arguments (1-id, 2-value which is displayed on the page)
+            $swichForAddTypesProduct = new SwichForAddTypesProduct(array('non_swiched','switcher_size','switcher_hwl','switcher_weight'),array('Non swiched','Switcher size','Switcher hwl','Switcher weight'));
+            // call function to create switch 
             echo $swichForAddTypesProduct->addSelect();
         ?>
-        <?php require_once 'Classes/swichToAddItemsHint.php';?>
+        <?php 
+        // switch for dynamically changing block with prompts for entering data of different types
+        require_once 'Classes/swich/swichToAddItemsHint.php';
+        ?>
     </form>
 </body>
 </html>
+<?php
+    require_once 'Classes/database/insertItemToDB.php';
+    $insertItemToDB = new InsertItemToDB();
+    // call function to validate input field and to create new items in database.
+    $insertItemToDB->setToInsert();
+?>

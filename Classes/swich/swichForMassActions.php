@@ -11,6 +11,4 @@ class SwichForMassActions extends BaseToSwich
     }
 }
 
-$swichForMassActions = new SwichForMassActions(array('defoult','Mass_Delete_Action'), array('defoult','Mass Delete Action'));
-
 ?>

@@ -1,8 +1,9 @@
 <?php 
-
+// switch for dynamically changing block with prompts for entering data of different types
 class SwichToAddItemsHint
+
 {
-    private $swichs=array('non swiched','Switcher size','Switcher hwl','Switcher weight');
+    private $swichNames=array('non swiched','Switcher size','Switcher hwl','Switcher weight');
     private $arrayName=array(array(), array('size'), array('height','width','lendth'), array('weight'));
     private $arrayHint=array(
         array(), 
@@ -12,13 +13,13 @@ class SwichToAddItemsHint
   
     function addBlockWhithHint($swich){
         $result='';
-        for($i=0; $i<count($this->swichs);$i++){
-            //Check what was selected. verification exclude option with 'non_swiched'
-            if($swich!=$this->swichs[0]&&$this->swichs[$i] == $swich){
+        for($i=0; $i<count($this->swichNames);$i++){
+            //Checked selection. excluded option 'non_swiched'
+            if($swich!=$this->swichNames[0]&&$this->swichNames[$i] == $swich){
                 echo "<div class='swich_item'>";
-                // output setting according to selection
+                // to display corresponding to the selection
                     for($y=0;$y<count($this->arrayName[$i]);$y++){
-                        echo "<label>".$this->arrayName[$i][$y].":</label><input type='text' name='".$this->arrayName[$i][$y]."'>";
+                        echo "<label>".$this->arrayName[$i][$y].":</label><input type='text' name='".$this->arrayName[$i][$y]."' required>";
                         echo "<p>".$this->arrayHint[$i][$y]."</p>";
                     } 
                 echo "</div>";  
@@ -28,5 +29,6 @@ class SwichToAddItemsHint
     }
 }
 $swichToAddItemsHint = new SwichToAddItemsHint();
+// check if there were selection event
 $swich=isset($_GET['swich'])?$_GET['swich']:'';
 echo $swichToAddItemsHint->addBlockWhithHint($swich);

@@ -1,0 +1,36 @@
+//***--->>>specify the following in the Classes/ConnectToDB.php file:
+
+$Domain = "____";
+$User = "____";
+$Password = "________";
+$MyDataBase = "_______"; 
+$MyTable = "______"; table name
+
+//***--->>> create table into db
+
+CREATE TABLE `".$table."` (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            `SKU` TEXT,
+            `name` VARCHAR(50) NOT NULL,
+            `price` FLOAT,
+            `size` TEXT,
+            `HxWxL` TEXT,
+            `weight` TEXT
+            )
+
+
+//***--->>>  for the test, you can create several products on the product add page 
+//***--->>>   by filling in all required fields or SQL
+
+
+INSERT INTO `".$table."`
+(`SKU`, `name`, `price`, `size`, `HxWxL`, `weight`) 
+VALUES ('QQ555WW','SD',15.00,'700mb','','')
+
+INSERT INTO `".$table."`
+(`SKU`, `name`, `price`, `size`, `HxWxL`, `weight`) 
+VALUES ('AA556WW','Harry Potter',45.00,'','','5kg')
+
+INSERT INTO `".$table."`
+(`SKU`, `name`, `price`, `size`, `HxWxL`, `weight`) 
+VALUES ('ZZ557WW','desck', 55.58,'','100x160x120','')

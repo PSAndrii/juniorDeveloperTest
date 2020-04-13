@@ -6,7 +6,7 @@ require_once 'connectToDB.php';
 
 Class DeleteItemsFromDB extends ConnectToDB
 {
-    // делаем запрос на удаление
+    // Makes a delete request with the database
     public function setToDelete($checkbox)
 	{
         $query = $this->setCreateToDelete($checkbox);  
@@ -18,7 +18,7 @@ Class DeleteItemsFromDB extends ConnectToDB
         if(!empty($query))$result = mysqli_query($this->link, $query);
     }
         
-    //Создает строку с запросом (Creates a query string)
+    //Creates query string to delete items from database  
     private function setCreateToDelete($checkbox)
 	{
 		$table = $this->table;
@@ -39,4 +39,5 @@ Class DeleteItemsFromDB extends ConnectToDB
     }
 }
 $deleteItemsFromDB = new DeleteItemsFromDB;
+
 ?>

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/general_style.css">
     <link rel="stylesheet" href="styles/product_list_page.css">
     <script src="js/jquery.js"></script>
+    <script src="js/select.js"></script>
     <title>Product list</title>
 </head>
 <body>
@@ -14,26 +15,30 @@
         <div class="headerInForm">
             <span class="size_header_text">Product_list</span>
             <div class="headerInForm">
-                <?php require_once 'Classes/swichForMassActions.php';
+                <?php require_once 'Classes/swich/swichForMassActions.php';  // to connect the necessary switch
+                //pass in arguments (1-id, 2-value which is displayed on the page)
+                    $swichForMassActions = new SwichForMassActions(array('defoult','Mass_Delete_Action'), array('defoult','Mass Delete Action'));
+                // call function to create switch 
                     echo $swichForMassActions->addSelect();
                 ?>
-                <?php require_once 'Classes/deleteItemsFromDB.php';
+                <?php require_once 'Classes/database/deleteItemsFromDB.php';
+                //checks availability of selected items for deletion
                     $checkbox = !empty($_POST['checkbox'])?$_POST['checkbox']:''; 
+                // call function to delete checked items
                     $deleteItemsFromDB->setToDelete($checkbox);
                 ?>
                 <button id="apply" class="btn btn_apply_pdding" type="submit">Apply</button>  
             </div>
         </div>
         <hr />
-        <?php //echo $base->addSelect(1); ?>
         <section>
         <?php 
-        require_once 'Classes/connectToDB.php';
-        require_once 'Classes/getItemsFromDB.php';
-        require_once 'Classes/sizeProduct.php';
-        require_once 'Classes/weightProduct.php'; 
-        require_once 'Classes/hwlProduct.php'; 
-
+        //to connect the necessary extends
+        require_once 'Classes/database/getItemsFromDB.php';
+        require_once 'Classes/product/sizeProduct.php';
+        require_once 'Classes/product/weightProduct.php'; 
+        require_once 'Classes/product/hwlProduct.php'; 
+        //to display the products with the necessary extends
         for($i=0; $i<count($getItemsFromDB->get());$i++){
             $sizeProduct = new SizeProduct($getItemsFromDB, $i);
                 echo $sizeProduct->getProduct(); 
@@ -45,22 +50,5 @@
         ?>
         </section>
     </form>
-<script>
-    function select_selected(){
-                var selected = $('select[name="select"]').val();
-                $.ajax({
-                    type: "POST",
-                    url: "",
-                    data: {choosed: selected},
-                    success: function(data){
-                        if(selected=='Mass Delete Action'){
-                            $('.checks').show();
-                        }else {
-                            $('.checks').hide();
-                        }
-                    }
-                });
-            };
-</script>
 </body>
 </html>

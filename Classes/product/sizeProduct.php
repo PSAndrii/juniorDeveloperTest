@@ -1,5 +1,5 @@
 <?php
-require_once 'Classes/product.php';
+require_once 'product.php';
 
 class SizeProduct extends Product
 {
@@ -17,7 +17,7 @@ class SizeProduct extends Product
         if($this->size){
             $result.= parent::getProduct();
             $result.= "<span>{$this->size}</span>";
-            $result.= "</a>"; 
+            $result.= "</div>"; 
         }
         return $result;
     }

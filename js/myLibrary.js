@@ -18,6 +18,6 @@ function OurGetXMLHttp() {
                 with (document.getElementById(ElementId))
                     innerHTML=MyXMLFile.responseText
         };
-        MyXMLFile.open("GET", "Classes/swichToAddItemsHint.php?swich="+value, true);
+        MyXMLFile.open("GET", "Classes/swich/swichToAddItemsHint.php?swich="+value, true);
         MyXMLFile.send()
     }
