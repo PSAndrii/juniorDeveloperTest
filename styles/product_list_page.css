@@ -4,11 +4,11 @@
     align-items: center;
 }
 
-.btn_apply_pdding{
-    padding: 2px 20px;
+.btn_apply_padding{
+    padding: 1px 20px;
 }
 
-section {
+section{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -26,21 +26,10 @@ section {
    
 }
 
-.scale:hover{
-    transform: scale(1.1);
-}
-
 .product-card span{
     display: block;
     padding: 7px;
     text-align: center;
-}
-
-footer{
-    display: flex;
-    justify-content: flex-end;
-    background-color: rgb(235, 233, 231);
-    font-size: 10px;
 }
 
 .checks{

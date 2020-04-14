@@ -1,9 +1,11 @@
 <?php
+// base class
 abstract class BaseToSwich
 {
     protected $nameOptions;
     protected $nameOptionsInnerHTML;
 
+    //create a construction with two incoming arguments
 public function __construct($nameOptions, $nameOptionsInnerHTML)
 {
     $this->nameOptions = $nameOptions;
@@ -12,9 +14,10 @@ public function __construct($nameOptions, $nameOptionsInnerHTML)
 
 public function addSelect()
 {
-    $result='';
+    $result=''; //create empty variable
     for($i=0;$i<count($this->nameOptions);$i++)
-    $result.= "<option id='{$this->nameOptions[$i]}'>{$this->nameOptionsInnerHTML[$i]}</option>";  
+    // creates drop-down list items
+        $result.= "<option id='{$this->nameOptions[$i]}'>{$this->nameOptionsInnerHTML[$i]}</option>";  
     return $result;
 }
 

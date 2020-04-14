@@ -4,7 +4,7 @@ class SwichToAddItemsHint
 
 {
     private $swichNames=array('non swiched','Switcher size','Switcher hwl','Switcher weight');
-    private $arrayName=array(array(), array('size'), array('height','width','lendth'), array('weight'));
+    private $arrayNamesToFildTypes=array(array(), array('size'), array('height','width','lendth'), array('weight'));
     private $arrayHint=array(
         array(), 
         array('SIZE - Lorem ipsum dolor, sit amet consectetur adipisicing elit.'),
@@ -18,8 +18,8 @@ class SwichToAddItemsHint
             if($swich!=$this->swichNames[0]&&$this->swichNames[$i] == $swich){
                 echo "<div class='swich_item'>";
                 // to display corresponding to the selection
-                    for($y=0;$y<count($this->arrayName[$i]);$y++){
-                        echo "<label>".$this->arrayName[$i][$y].":</label><input type='text' name='".$this->arrayName[$i][$y]."' required>";
+                    for($y=0;$y<count($this->arrayNamesToFildTypes[$i]);$y++){
+                        echo "<label>".$this->arrayNamesToFildTypes[$i][$y].":</label><input type='text' name='".$this->arrayNamesToFildTypes[$i][$y]."' required>";
                         echo "<p>".$this->arrayHint[$i][$y]."</p>";
                     } 
                 echo "</div>";  

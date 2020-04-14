@@ -27,7 +27,7 @@
                 // call function to delete checked items
                     $deleteItemsFromDB->setToDelete($checkbox);
                 ?>
-                <button id="apply" class="btn btn_apply_pdding" type="submit">Apply</button>  
+                <button id="apply" class="btn btn_apply_padding" type="submit">Apply</button>  
             </div>
         </div>
         <hr />

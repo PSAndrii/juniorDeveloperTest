@@ -14,6 +14,12 @@
         <div class="header">
             <span class="size_header_text">Product_Add</span>
             <button type="submit" class="btn btn_save_padding" value="Save">Save</button> 
+            <?php
+                require_once 'Classes/database/insertItemToDB.php';
+                $insertItemToDB = new InsertItemToDB();
+                // call function to validate input field and to create new items in database.
+                $insertItemToDB->setToInsert();
+            ?>
         </div>
         <hr>
         <p><span class="error"> * - required field</span></p> 
@@ -33,9 +39,3 @@
     </form>
 </body>
 </html>
-<?php
-    require_once 'Classes/database/insertItemToDB.php';
-    $insertItemToDB = new InsertItemToDB();
-    // call function to validate input field and to create new items in database.
-    $insertItemToDB->setToInsert();
-?>

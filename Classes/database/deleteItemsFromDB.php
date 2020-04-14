@@ -29,7 +29,7 @@ Class DeleteItemsFromDB extends ConnectToDB
 			$delete = "DELETE FROM `".$table."` WHERE ";
 			$str='';
 			for($i=0;$i<count($dell);$i++){
-	    		$str .= !empty($str)?' OR '.$dell[$i].' ':$dell[$i].' ';
+	    		$str .= !empty($str)?'OR '.$dell[$i].' ':$dell[$i].' ';
 			}
 			$str = substr($str, 0, -1).";";
             $delete .= $str;
