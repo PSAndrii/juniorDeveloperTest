@@ -16,10 +16,10 @@ class WeightProduct extends Product
         //expands the basic logic and displays on the screen
         $result='';
         if($this->weight){
-            $result= "<div id='{$this->id}' class='product-card'>"; // create needed to this type product block 
+            $result.= parent::openBlock(); // calls the parent method to open the block
             $result.= parent::getProduct(); // general products logic
             $result.= "<span>{$this->weight}</span>"; // add own type
-            $result.= "</div>";  // close this block 
+            $result.= parent::closeBlock(); // calls the parent method to close the block
         }
         return $result;
     }

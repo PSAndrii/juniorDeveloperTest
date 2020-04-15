@@ -5,7 +5,7 @@ abstract class BaseToSwich
     protected $nameOptions;
     protected $nameOptionsInnerHTML;
 
-    //create a construction with two incoming arguments
+//create a construction with two incoming arguments
 public function __construct($nameOptions, $nameOptionsInnerHTML)
 {
     $this->nameOptions = $nameOptions;

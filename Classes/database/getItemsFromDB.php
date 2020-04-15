@@ -2,7 +2,7 @@
 require_once 'connectToDB.php';
 
 //-------------------------------------------------------
-// Show items on page 
+// Displays items on the screen 
 class GetItemsFromDB extends ConnectToDB
 {
     	

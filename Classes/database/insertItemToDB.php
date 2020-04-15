@@ -2,7 +2,7 @@
 require_once 'connectToDB.php';
 
 // ---------------------------------------------------------------
-// insert products(items) 
+// inserts products(items) 
 
 Class InsertItemToDB extends ConnectToDB
 {
@@ -27,11 +27,11 @@ Class InsertItemToDB extends ConnectToDB
 	{
         $table = $this->table;
         $sku=$name=$price=$addName=$addValue=''; //created variables to save the data
-        // created pattern to validate
+        // created pattern to validate input data
         $pattern_sku = '/^[a-zA-Zа-яА-ЯЁё0-9]{1,50}$/u';
         $pattern_other = '/^[a-zA-Zа-яА-ЯЁё0-9\s\.\-\+\_\!\@\#\$\%\^\&\*\(\)\`\~\"\'\?\/]{1,50}$/u';
         $pattern_price = '/^[0-9\.]{1,}$/u';
-        //validates data
+        //validates the data
         if (!empty($_POST['sku'])){
             if(preg_match($pattern_sku, $_POST['sku']))
                 $sku = htmlspecialchars(strip_tags($_POST['sku']));
@@ -46,9 +46,9 @@ Class InsertItemToDB extends ConnectToDB
             if(preg_match($pattern_price, $_POST['price']))
                 $price = htmlspecialchars(strip_tags($_POST['price']));
             }
-        //selects type switch filled data  for recording in the DB
-          //$addName assign the name of the cell in the database
-            //$addValue assign the value that we save in this cell
+        //selects switch type according to filled data for saving in the DB
+          //$addName assigns the name of the cell in the database
+            //$addValue assigns the value that we save in this cell
         if(!empty($_POST['size'])) {
             if(preg_match($pattern_other, $_POST['size'])){
                 $addName='size'; 

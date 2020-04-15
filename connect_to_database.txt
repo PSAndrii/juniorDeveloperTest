@@ -1,4 +1,4 @@
-//***--->>>specify the following in the Classes/ConnectToDB.php file:
+//***--->>>specify the following in the Classes/database/ConnectToDB.php file:
 
 $Domain = "____";
 $User = "____";
@@ -6,7 +6,7 @@ $Password = "________";
 $MyDataBase = "_______"; 
 $MyTable = "______"; table name
 
-//***--->>> create table into db
+//***--->>> create table in the database
 
 CREATE TABLE `".$table."` (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -20,7 +20,7 @@ CREATE TABLE `".$table."` (
 
 
 //***--->>>  for the test, you can create several products on the product add page 
-//***--->>>   by filling in all required fields or SQL
+//***--->>>   by filling in all required fields or SQL (example below)
 
 
 INSERT INTO `".$table."`

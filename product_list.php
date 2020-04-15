@@ -18,13 +18,13 @@
                 <?php require_once 'Classes/swich/swichForMassActions.php';  // to connect the necessary switch
                 //pass in arguments (1-id, 2-value which is displayed on the page)
                     $swichForMassActions = new SwichForMassActions(array('defoult','Mass_Delete_Action'), array('defoult','Mass Delete Action'));
-                // call function to create switch 
+                // call function to create this switch 
                     echo $swichForMassActions->addSelect();
                 ?>
                 <?php require_once 'Classes/database/deleteItemsFromDB.php';
                 //checks availability of selected items for deletion
                     $checkbox = !empty($_POST['checkbox'])?$_POST['checkbox']:''; 
-                // call function to delete checked items
+                // call function to delete selected items
                     $deleteItemsFromDB->setToDelete($checkbox);
                 ?>
                 <button id="apply" class="btn btn_apply_padding" type="submit">Apply</button>  

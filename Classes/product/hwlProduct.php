@@ -5,8 +5,9 @@ class HWLProduct extends Product
 {
     //declares type variable 
     private $hwl;
-    // extends construct on needed type
-    public function __construct($db, $i){
+    // extends construct of needed type
+    public function __construct($db, $i)
+    {
         parent::__construct($db, $i);
         $this->hwl=$db->get()[$i]['HxWxL'];
     }
@@ -16,10 +17,10 @@ class HWLProduct extends Product
         //expands the basic logic and displays on the screen
         $result='';
         if($this->hwl){
-            $result= "<div id='{$this->id}' class='product-card'>"; // // create needed to this type product block 
-            $result.= parent::getProduct(); // general products logic
-            $result.= "<span>{$this->hwl}</span>"; // add own type
-            $result.= "</div>";  // close block this
+            $result.= parent::openBlock();  // calls the parent method to open the block
+            $result.= parent::getProduct(); // general product's logic
+            $result.= "<span>{$this->hwl}</span>"; // adds own type
+            $result.= parent::closeBlock(); // calls the parent method to close the block
         }
         return $result;
     }

@@ -18,7 +18,7 @@ Class DeleteItemsFromDB extends ConnectToDB
         if(!empty($query))$result = mysqli_query($this->link, $query);
     }
         
-    //Creates query string to delete items from database  
+    //Creates query string to delete items from the database  
     private function setCreateToDelete($checkbox)
 	{
 		$table = $this->table;

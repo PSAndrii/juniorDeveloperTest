@@ -33,8 +33,8 @@
             echo $swichForAddTypesProduct->addSelect();
         ?>
         <?php 
-        // switch for dynamically changing block with prompts for entering data of different types
-        require_once 'Classes/swich/swichToAddItemsHint.php';
+        // switch for dynamically changing block wich prompts for entering different types of data 
+        require_once 'Classes/swich/dynamicalCreationBlock.php';
         ?>
     </form>
 </body>
